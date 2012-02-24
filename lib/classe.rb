@@ -14,9 +14,14 @@ class Classe
 	end
 
 	def nome_do_aluno_reprovado
-		@alunos.sort_by { 
-			|aluno| [aluno.quantidade_de_exercicios_resolvidos && aluno.nome]
-		}.last.nome
+		alunos = ordena_por_quantidade_de_exercicios_e_nome
+		alunos.last.nome
 	end
+
+	def ordena_por_quantidade_de_exercicios_e_nome
+		@alunos.sort_by do  |aluno| 
+			[aluno.quantidade_de_exercicios_resolvidos && aluno.nome]
+		end 
+	end		
 
 end
